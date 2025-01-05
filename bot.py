@@ -5,11 +5,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, CallbackQueryHandler, filters
 
-# Directly adding Spotify API credentials
+# Replace with your Spotify API credentials
 SPOTIFY_CLIENT_ID = "3d3ca7d9786c4e5a8595e691afe14154"
 SPOTIFY_CLIENT_SECRET = "c9f9f3ba13b14cc69bea2e405c05ab75"
 
-# Directly adding Telegram bot token
+# Replace with your bot's token
 BOT_TOKEN = "7087446727:AAGVvWy17UM0prkrgMBv-oicg5F1qFyHBXA"
 
 # Initialize Spotify API client
@@ -92,11 +92,8 @@ async def select_song(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if file.endswith(".mp3"):
                 os.remove(file)
         
-        # Download the song using spotdl
-        command = [
-            "C:\\Users\\PC\\AppData\\Roaming\\Python\\Python310\\Scripts\\spotdl.exe",
-            track_url
-        ]
+        # Download the song using spotdl (use the installed spotdl command)
+        command = ["spotdl", track_url]
         subprocess.run(command, check=True)
         
         # Find the downloaded file (assuming it has the .mp3 extension)
