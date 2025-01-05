@@ -43,7 +43,7 @@ soundcloud-v2==1.6.0
 soupsieve==2.6
 spotdl==4.1.0
 spotipy==2.24.0
-starlette==0.27.0
+starlette==0.22.0
 syncedlyrics==0.2.2
 telebot==0.0.5
 text-unidecode==1.3
