@@ -1,4 +1,4 @@
-annotated-types==0.7.0
+annotating-types==0.7.0
 anyio==3.7.1
 async-timeout==5.0.1
 beautifulsoup4==4.12.3
@@ -34,7 +34,6 @@ python-slugify==8.0.4
 python-telegram-bot==21.9
 pytube==11.0.1
 pytz==2024.2
-pywin32==308
 RapidFuzz==3.11.0
 redis==5.2.1
 requests==2.28.2
