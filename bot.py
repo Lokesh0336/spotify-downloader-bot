@@ -4,17 +4,13 @@ from spotipy import Spotify
 from spotipy.oauth2 import SpotifyClientCredentials
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, CallbackQueryHandler, filters
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Directly adding Spotify API credentials
+SPOTIFY_CLIENT_ID = "3d3ca7d9786c4e5a8595e691afe14154"
+SPOTIFY_CLIENT_SECRET = "c9f9f3ba13b14cc69bea2e405c05ab75"
 
-# Replace with your Spotify API credentials
-SPOTIFY_CLIENT_ID = os.getenv("3d3ca7d9786c4e5a8595e691afe14154")
-SPOTIFY_CLIENT_SECRET = os.getenv("c9f9f3ba13b14cc69bea2e405c05ab75")
-
-# Replace with your bot's token
-BOT_TOKEN = os.getenv("7087446727:AAGVvWy17UM0prkrgMBv-oicg5F1qFyHBXA")
+# Directly adding Telegram bot token
+BOT_TOKEN = "7087446727:AAGVvWy17UM0prkrgMBv-oicg5F1qFyHBXA"
 
 # Initialize Spotify API client
 spotify_client = Spotify(
@@ -42,7 +38,7 @@ async def search_and_download(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
     
     await update.message.reply_text(f"Searching for '{query}' on Spotify...")
-
+    
     try:
         # Search for tracks on Spotify
         results = spotify_client.search(q=query, type="track", limit=5)  # Limit to 5 results
@@ -97,7 +93,10 @@ async def select_song(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 os.remove(file)
         
         # Download the song using spotdl
-        command = ["spotdl", track_url]  # Ensure spotdl is installed
+        command = [
+            "C:\\Users\\PC\\AppData\\Roaming\\Python\\Python310\\Scripts\\spotdl.exe",
+            track_url
+        ]
         subprocess.run(command, check=True)
         
         # Find the downloaded file (assuming it has the .mp3 extension)
